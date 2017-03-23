@@ -1,11 +1,11 @@
-angular.module('todoService', [])
+angular.module('specialsService', [])
 
 	// super simple service
 	// each function returns a promise object 
-	.service('Todos', ['$http',function($http) {
+	.service('Specials', ['$http',function($http) {
 		return {
 			get : function() {
-				return $http.get('/api/todos');
+				return $http.get('/api/specials');
 			},
 			create : function(todoData) {
 				return $http.post('/api/todos', todoData);

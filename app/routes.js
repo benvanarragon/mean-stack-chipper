@@ -1,4 +1,7 @@
 var Todo = require('./models/todo');
+var Category = require('./models/category');
+var Food = require('./models/food');
+var Specials = require('./models/specials');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -11,6 +14,38 @@ function getTodos(res) {
         res.json(todos); // return all todos in JSON format
     });
 };
+
+function getCategories(res){
+    Category.find(function (err, category){
+        if(err){
+            res.send(err);
+        }
+
+        res.json(category);//return all categories in JSON format
+    })
+};
+
+function getFoods(res){
+    Food.find(function (err, food){
+        if(err){
+            res.send(err);
+        }
+
+        res.json(food);//return all foods in JSON format
+    })
+};
+
+function getSpecials(res){
+    Specials.find(function (err, specials){
+        if(err){
+            res.send(err);
+        }
+
+        res.json(specials);//return all specials in JSON format
+    })
+};
+
+
 
 module.exports = function (app) {
 
@@ -49,6 +84,30 @@ module.exports = function (app) {
             getTodos(res);
         });
     });
+
+
+    //-------------------------------------------
+    // get all categories
+    app.get('/api/categories', function (req, res) {
+        // use mongoose to get all categories in the database
+        getCategories(res);
+    });
+
+    //------------------------------------------------
+    //get all food
+    app.get('/api/foods', function (req, res) {
+        // use mongoose to get all categories in the database
+        getFoods(res);
+    });
+
+     //------------------------------------------------
+    //get all specials
+    app.get('/api/specials', function (req, res) {
+        // use mongoose to get all categories in the database
+        getSpecials(res);
+    });
+
+
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {

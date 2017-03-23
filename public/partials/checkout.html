@@ -1,0 +1,88 @@
+<!-- {{callGetBasket()}} -->
+{{getDayName()}}<!-- 
+{{generateSpecials()}}
+{{callGetBasketPrice()}} -->
+<!-- <div ng-repeat="(specialIndex, special) in specials" class="row">
+
+
+
+	<div class="col-md-5 col-md-offset-6 jumbotron">
+		
+			{{specials[$index].special_name}} - €{{specials[$index].special_price}}
+		 	
+		 	<h4><a href="" ng-click="showFoods(specialIndex)"><i class="fa fa-plus" aria-hidden="true"></i></a></h4>
+		 	 <ul ng-repeat="food in foods" ng-show="isShowing(specialIndex)" ng-if="special.items_ids.indexOf(food.food_id) > -1" >
+		 	 	
+	            <strong><i> </i>{{food.food_name}}</strong> normally <del>€{{food.price}}</del>
+	        </ul>
+	</div>
+</div>
+ -->
+<div class="row">
+<br/>
+<br/>
+	<div  class="col-md-5 col-md-offset-1 ">
+		<div class="panel panel-default">
+  			<div class="panel-body">
+			<h2>Original Order</h2><br/>
+				<div ng-repeat="food in basket">
+					{{food.food_name}} - {{food.price | currency}}
+				</div>
+				Total - {{basketPrice | currency}}
+			</div>
+		</div>
+	<!-- </div>end of class col md 3  -->
+
+
+<div class="col-md-12 text-center">
+	<div class="panel panel-default">
+  		<div class="panel-body">
+			<strong><h1><i class="fa fa-shopping-cart" aria-hidden="true"></i> </h1></strong>
+				<div class="verticalLine" style="margin-left: 50%"><br/></div>
+				<br />
+				<div ng-repeat="food in tempBasket">
+					x{{food.quantity}} - {{food.food_name}} 
+				</div>
+				<br />
+				<div class="text-center">
+			<strong >Checkout - {{tempBasketPrice | currency}}</strong></div>
+			<br />
+			<div class="verticalLine" style="margin-left: 50%"><br/></div>
+			<br />
+			<button class="pull-left" ng-click="receipt()">Pay Now</button>
+			<button class="pull-right" ng-click="switch()">Switch to {{switchTo}}</button>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<div class="col-md-4 col-md-offset-1">
+	<div class="panel panel-default">
+  		<div class="panel-body">
+  			<h2><strong>Specials</strong></h2>
+			<div ng-repeat="(specialIndex, special) in specials" ng-if="special.special_name == todayName || special.special_name == suggestedSpecial || special.special_name == suggestedSpecial2 || special.special_name == suggestedSpecial3">
+				<div class="">
+				<br />
+					<div ng-show="special.special_name == todayName"><h4><strong>DEAL OF THE DAY<strong></h4></div>
+						<input type="radio" name="name" ng-model="selectedSpecial.val" ng-value="special.special_name" ng-change="changedValue()">
+						{{special.special_name}} - {{specials[$index].special_price | currency}} - 
+						<h5 style="color: red">{{special.messages}}</h5>
+					 	
+					 	<h4><a href="" ng-click="showFoods(specialIndex)"><i class="fa fa-plus" aria-hidden="true"></i></a></h4>
+					 	 <ul ng-repeat="food in foods" ng-show="isShowing(specialIndex)" ng-if="special.items_ids.indexOf(food.food_id) > -1" >
+					 	 	
+				            <strong><i>x{{food.quantity}} </i>{{food.food_name}}</strong> normally <del>{{food.price | currency}}</del>
+				        </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+</div>
+
+
