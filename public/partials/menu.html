@@ -106,7 +106,7 @@
 
 		<!-- Better way to loop through a nested ng-repeat -->
         <div ng-repeat="category in categories" class="row">
-	        <div class="col-md-10 col-md-offset-1 jumbotron">
+	        <div class="col-md-10 col-md-offset-1 panel panel-default">
 	            <div id="{{category.category_name}}">
 	            	<h2>
 	            		<strong>
@@ -120,6 +120,26 @@
 	            </div> 
         	</div>
     	</div>
+
+    	<div>
+    	<br/>
+    	<br/>
+    	</div>
+
+    	<div ng-repeat="(specialIndex, special) in specials"  class="row">
+			<div class="col-md-10 col-md-offset-1 panel panel-default">
+					<input type="checkbox" ng-click="callAddToBasket(special)"/>
+					{{specials[$index].special_name}} - €{{specials[$index].price}}
+				 	
+				 	
+				 	 <ul ng-repeat="food in foods" ng-if="special.items_ids.indexOf(food.food_id) > -1" >
+				 	 	
+			            <strong><i></i>{{food.food_name}}</strong> normally <del>€{{food.price}}</del>
+
+
+			        </ul>
+			</div>
+		</div>
 
 
         
