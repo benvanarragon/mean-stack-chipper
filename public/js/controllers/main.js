@@ -245,7 +245,7 @@ todoController.controller('CheckoutCtrl', ['$scope', 'Food', 'Specials',
 						for(var i = 0; i < $scope.specials.length; i++){
 							if($scope.specials[i].special_name == $scope.selectedSpecial.val){
 								$scope.selectedSpecialObj = $scope.specials[i];
-								$scope.tempBasketPrice = $scope.selectedSpecialObj.special_price;
+								$scope.tempBasketPrice = $scope.selectedSpecialObj.price;
 								//$scope.tempBasket = $scope.selectedSpecialObj;
 								
 								$scope.tempBasket = [];
@@ -496,7 +496,7 @@ todoController.controller('CheckoutCtrl', ['$scope', 'Food', 'Specials',
 				$scope.message = "For $";
 				$scope.priceDiff = 0;
 				$scope.evaluator = "";
-				$scope.specialPrice = $scope.specials[i].special_price;
+				$scope.specialPrice = $scope.specials[i].price;
 								
 				for(var i = 0; i < $scope.specials.length; i++){
 					if($scope.specialPrice > $scope.tempBasketPrice){
