@@ -38,24 +38,56 @@
 <div class="col-md-4 ">
 	<div class="panel panel-default">
   		<div class="panel-body">
-  			<h2><strong>Specials</strong></h2>
-			<div ng-repeat="(specialIndex, special) in specials" ng-if="special.special_name == todayName || special.special_name == suggestedSpecial || special.special_name == suggestedSpecial2 || special.special_name == suggestedSpecial3">
-				<div class="">
-				<br />
-					<div ng-show="special.special_name == todayName"><h4><strong>DEAL OF THE DAY<strong></h4></div>
-						<input type="radio" name="name" ng-model="selectedSpecial.val" ng-value="special.special_name" ng-change="changedValue()">
-						{{special.special_name}} - {{specials[$index].price | currency}} - 
-						<h5 style="color: red">{{special.messages}}</h5>
-					 	
-					 	
-					 	 <ul ng-repeat="food in foods"  ng-if="special.items_ids.indexOf(food.food_id) > -1" >
-					 	 	
-				            <strong><i>x{{food.quantity}} </i>{{food.food_name}}</strong> normally <del>{{food.price | currency}}</del>
-				        </ul>
+  			<h2><strong>Suggested Specials</strong></h2>
+  			<h5>Below are specials that contain items similar to what is in your cart for a deal</h5>
+  			<h4><a href="" ng-click="isSpecialsOpen = !isSpecialsOpen"><i class="fa fa-plus" aria-hidden="true">    Click to expand</i></a></h4>
+  				<div ng-show="isSpecialsOpen" id="specials">
+					<div ng-repeat="(specialIndex, special) in specials" ng-if="special.special_name == todayName || special.special_name == suggestedSpecial || special.special_name == suggestedSpecial2 || special.special_name == suggestedSpecial3">
+						<div class="">
+						<br />
+							<div ng-show="special.special_name == todayName"><h4><strong>DEAL OF THE DAY<strong></h4></div>
+								<input type="radio" name="name" ng-model="selectedSpecial.val" ng-value="special.special_name" ng-change="changedValue()">
+								{{special.special_name}} - {{specials[$index].price | currency}} - 
+								<h5 style="color: red">{{special.messages}}</h5>
+							 	
+							 	
+							 	 <ul ng-repeat="food in foods"  ng-if="special.items_ids.indexOf(food.food_id) > -1" >
+							 	 	
+						            <strong><i>x{{food.quantity}} </i>{{food.food_name}}</strong> normally <del>{{food.price | currency}}</del>
+						        </ul>
+						</div>
+					</div>
 				</div>
-			</div>
 		</div>
 	</div>
+
+	<div class="col-md-12 ">
+		<div class="panel panel-default">
+  			<div class="panel-body">
+  				<h2><strong>All Specials</strong></h2>
+  				<h4><a href="" ng-click="isSpecialsOpen1 = !isSpecialsOpen1"><i class="fa fa-plus" aria-hidden="true">    Click to expand</i></a></h4>
+  				<div ng-show="isSpecialsOpen1" id="specials1">
+  					<div ng-repeat="(specialIndex, special) in specials" ng-if="special.special_name != todayName || special.special_name != suggestedSpecial || special.special_name != suggestedSpecial2 || special.special_name != suggestedSpecial3">
+						<div class="">
+						<br />
+						
+							<input type="radio" name="name" ng-model="selectedSpecial.val" ng-value="special.special_name" ng-change="changedValue()">
+							{{special.special_name}} - {{specials[$index].price | currency}} - 
+							<h5 style="color: red">{{special.messages}}</h5>
+						 	
+						 	
+						 	 <ul ng-repeat="food in foods"  ng-if="special.items_ids.indexOf(food.food_id) > -1" >
+						 	 	
+					            <strong><i>x{{food.quantity}} </i>{{food.food_name}}</strong> normally <del>{{food.price | currency}}</del>
+					        </ul>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+
 </div>
 
 
