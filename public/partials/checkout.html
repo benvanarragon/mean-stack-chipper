@@ -65,6 +65,7 @@
 		<div class="panel panel-default">
   			<div class="panel-body">
   				<h2><strong>All Specials</strong></h2>
+				<h5>Below are all the specials for your viewing pleasure</h5>
   				<h4><a href="" ng-click="isSpecialsOpen1 = !isSpecialsOpen1"><i class="fa fa-plus" aria-hidden="true">    Click to expand</i></a></h4>
   				<div ng-show="isSpecialsOpen1" id="specials1">
   					<div ng-repeat="(specialIndex, special) in specials" ng-if="special.special_name != todayName || special.special_name != suggestedSpecial || special.special_name != suggestedSpecial2 || special.special_name != suggestedSpecial3">
@@ -100,8 +101,8 @@
 				<div class="verticalLine" style="margin-left: 50%"><br/></div>
 				<br />
 				<div ng-repeat="food in tempBasket">
-					x{{food.quantity}} - {{food.food_name}} 
-					{{food.special_name}} - {{food.price | currency}}
+					<h4>x{{food.quantity}} - {{food.food_name}}
+					{{food.special_name}} - {{food.price | currency}}</h4>
 					
 					<ul ng-repeat="foodd in foods"  ng-if="specials[food.special_id].items_ids.indexOf(foodd.food_id) > -1" >
 					 	 	

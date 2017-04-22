@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute','todoController', 'todoService', 'categoryService', 'foodService', 'specialsService']);
+var app = angular.module('app', ['ngRoute','mainController', 'categoryService', 'foodService', 'specialsService']);
 
 app.run(function( ) {
  // editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'

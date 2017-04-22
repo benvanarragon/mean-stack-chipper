@@ -1,10 +1,10 @@
-var todoController = angular.module('todoController', [])
+var mainController = angular.module('mainController', [])
 
 
 
-	// inject the Todo service factory into our controller
-	todoController.controller('MenuCtrl', ['$scope','$http','Todos', 'Category', 'Food', 'Specials', '$location', '$anchorScroll',  
-		function($scope, $http, Todos, Category, Food, Specials, $location, $anchorScroll) {
+	// inject the food, specials, and category service factory into our controller
+	mainController.controller('MenuCtrl', ['$scope','$http','Category', 'Food', 'Specials', '$location', '$anchorScroll',
+		function($scope, $http, Category, Food, Specials, $location, $anchorScroll) {
 		$scope.formData = {};
 		$scope.loading = true;
 		$scope.oldPrice = 0;
@@ -55,14 +55,7 @@ var todoController = angular.module('todoController', [])
 				$scope.categories = data;
 			});
 
-		// GET =====================================================================
-		// when landing on the page, get all todos and show them
-		// use the service to get all the todos
-		Todos.get()
-			.success(function(data) {
-				$scope.todos = data;
-				$scope.loading = false;
-			});
+
 
 		$scope.addFood = function(food){
 			$scope.loading = true;
@@ -73,43 +66,11 @@ var todoController = angular.module('todoController', [])
 		}
 
 
-		// CREATE ==================================================================
-		// when submitting the add form, send the text to the node API
-		$scope.createTodo = function() {
 
-			// validate the formData to make sure that something is there
-			// if form is empty, nothing will happen
-			if ($scope.formData.text != undefined) {
-				$scope.loading = true;
-
-				// call the create function from our service (returns a promise object)
-				Todos.create($scope.formData)
-
-					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
-						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.todos = data; // assign our new list of todos
-					});
-			}
-		};
-
-		// DELETE ==================================================================
-		// delete a todo after checking it
-		$scope.deleteTodo = function(id) {
-			$scope.loading = true;
-
-			Todos.delete(id)
-				// if successful creation, call our get function to get all the new todos
-				.success(function(data) {
-					$scope.loading = false;
-					$scope.todos = data; // assign our new list of todos
-				});
-		};
 	}]); //main controller
 
 
-todoController.controller('HomeCtrl', ['$scope' ,
+mainController.controller('HomeCtrl', ['$scope' ,
 		function($scope) {
 			
 			$scope.name= "AngularNode101";
@@ -118,7 +79,7 @@ todoController.controller('HomeCtrl', ['$scope' ,
 
 
 
-todoController.controller('SpecialCtrl', ['$scope', 'Specials', 'Food', 
+mainController.controller('SpecialCtrl', ['$scope', 'Specials', 'Food',
 		function($scope, Specials, Food) {
 			$scope.activeFoodIndex;
 			$scope.oldFoodPrice = "hi";
@@ -163,7 +124,7 @@ todoController.controller('SpecialCtrl', ['$scope', 'Specials', 'Food',
 		}]); // SpecialCtrl
 
 
-todoController.controller('ctrl', ['$scope',
+mainController.controller('ctrl', ['$scope',
 		function($scope){
 			$scope.things = [
 		        { values: [ 'a', 'b', 'c'] },
@@ -172,7 +133,7 @@ todoController.controller('ctrl', ['$scope',
 		}]); //ctrl
 
 
-todoController.controller('CheckoutCtrl', ['$scope', 'Food', 'Specials', 
+mainController.controller('CheckoutCtrl', ['$scope', 'Food', 'Specials',
 		function($scope, Food, Specials) {
 			$scope.activeFoodIndex;
 			$scope.oldFoodPrice; 
@@ -251,9 +212,9 @@ todoController.controller('CheckoutCtrl', ['$scope', 'Food', 'Specials',
 								$scope.tempBasket = [];
 								$scope.basketPrice = Food.getBasketPrice();
 								$scope.basket = Food.getBasket();
-
+								$scope.tempBasket.push($scope.selectedSpecialObj);
 								
-									for(var j = 0; j < $scope.foods.length; j++){
+									/*for(var j = 0; j < $scope.foods.length; j++){
 										var n = $scope.selectedSpecialObj.items_ids.indexOf($scope.foods[j].food_id);
 										if(n > -1)
 										{
@@ -261,7 +222,7 @@ todoController.controller('CheckoutCtrl', ['$scope', 'Food', 'Specials',
 
 											
 										}
-									}
+									}*/
 									
 								
 							}
