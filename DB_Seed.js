@@ -192,49 +192,49 @@
 {
   "special_id": 0,
   "special_name": "Monday",
-  "special_price": 5.00,
+  "price": 5.00,
   "items_ids": [10,0],
   "quantity":[1,1]
 }
 {
   "special_id": 1,
   "special_name": "Tuesday",
-  "special_price": 5.00,
+  "price": 5.00,
   "items_ids": [15,0],
   "quantity":[1,1]
 }
 {
   "special_id": 2,
   "special_name": "Wednesday",
-  "special_price": 5.00,
+  "price": 5.00,
   "items_ids": [16,0],
   "quantity":[1,1]
 }
 {
   "special_id": 3,
   "special_name": "Thursday",
-  "special_price": 5.00,
+  "price": 5.00,
   "items_ids": [8,0],
   "quantity":[1,1]
 }
 {
   "special_id": 4,
   "special_name": "Friday",
-  "special_price": 6.00,
+  "price": 6.00,
   "items_ids": [20],
   "quantity":[1]
 }
 {
   "special_id": 5,
   "special_name": "Saturday",
-  "special_price": 5.00,
+  "price": 5.00,
   "items_ids": [12,3,0],
   "quantity":[6,2,1]
 }
 {
   "special_id": 6,
   "special_name": "Every Day Meal",
-  "special_price": 5.00,
+  "price": 5.00,
   "items_ids": [1,7,4,13],
   "quantity":[2,2,2,1]
 }

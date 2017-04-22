@@ -7,7 +7,7 @@
 <div ng-repeat="(specialIndex, special) in specials"  class="row">
 	<div class="col-md-10 col-md-offset-1 panel panel-default">
 		
-			<h3><strong>{{specials[$index].special_name}} - €{{specials[$index].special_price}}</strong></h3>
+			<h3><strong>{{specials[$index].special_name}} - €{{specials[$index].price}}</strong></h3>
 		 	
 		 	
 		 	 <ul ng-repeat="food in foods"  ng-if="special.items_ids.indexOf(food.food_id) > -1" >
